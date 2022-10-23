@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title> Ordem de serviço</title>
+<title>Ordem de serviço</title>
 
 <!-- Bootstrap -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -44,19 +44,18 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="/motoboys"><< Listar Motoboy >></a></li>
+						<li class="nav-item"><a class="nav-link" href="/motoboys"><<
+								Listar Motoboy >></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastrarMotoboy">Cadastrar Motoboy</a></li>
 						<li class="nav-item"><a class="nav-link" href="/servicos">
 								<< Listar serviços>> </a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastraServico"> Cadastrar Ordem de serviço </a></li>
-											<li class="nav-item"><a class="nav-link" href="/clientes">
-								<< Listar Clientes>>
-							</a></li>
-						<li class="nav-item"><a class="nav-link" href="/cadastrarCliente">
-								 Cadastrar Cliente
-							</a></li>
+						<li class="nav-item"><a class="nav-link" href="/clientes">
+								<< Listar Clientes>> </a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarCliente"> Cadastrar Cliente </a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Sair
 						</a></li>
 					</ul>
@@ -68,7 +67,7 @@
 	<div class="container">
 		<br>
 		<h1>Informações do Cliente:</h1>
-		<div class="container" th:each="cliente : ${cliente}">
+		<div class="container" th:each="cliente : ${clientes}">
 
 			<br>
 
@@ -84,31 +83,11 @@
 			<p>
 				<b>CNPJ:</b> <span th:text="${cliente.cnpj}"></span>
 			</p>
-			<p>
-				<b>logradouro:</b> <span th:text="${cliente.logradouro}"></span>
-			</p>
-			<p>
-				<b>Bairro:</b> <span th:text="${cliente.bairro}"></span>
-			</p>
-			<p>
-				<b>CEP:</b> <span th:text="${cliente.cep}"></span>
-			</p>
-			<p>
-				<b>Número:</b> <span th:text="${cliente.numero}"></span>
-			</p>
-			<p>
-				<b>Complemento:</b> <span th:text="${cliente.complemento}"></span>
-			</p>
-			<p>
-				<b>Localidade:</b> <span th:text="${cliente.localidade}"></span>
-			</p>
-			<p>
-				<b>UF:</b> <span th:text="${cliente.uf}"></span>
-			</p>
-			
-			<!-- 
+
+			<hr>
+
 			<br> <br>
-			<h2>Dependentes:</h2>
+			<h2>Endereços:</h2>
 
 			<br>
 
@@ -116,96 +95,179 @@
 				class="table table-hover table-responsive w-auto table-striped">
 				<thead>
 					<tr>
-						<th scope="col">Nome do dependente:</th>
-						<th scope="col">CPF:</th>
-						<th scope="col">Data de nascimento:</th>
+						<th scope="col">Endereço:</th>
+						<th scope="col">Número:</th>
+						<th scope="col">Bairro:</th>
+						<th scope="col">Complemento:</th>
+						<th scope="col">Cidade:</th>
+						<th scope="col">Cep:</th>
+						<th scope="col">Uf:</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="dependente : ${dependentes}">
-						<td><span th:text="${dependente.nome}"></span></td>
-						<td><span th:text="${dependente.cpf}"></span></td>
-						<td><span th:text="${dependente.datanascimento}"></span></td>
+					<tr th:each="endereco : ${enderecos}">
+						<td><span th:text="${endereco.logradouro}"></span></td>
+						<td><span th:text="${endereco.numero}"></span></td>
+						<td><span th:text="${endereco.bairro}"></span></td>
+						<td><span th:text="${endereco.complemento}"></span></td>
+						<td><span th:text="${endereco.localidade}"></span></td>
+						<td><span th:text="${endereco.cep}"></span></td>
+						<td><span th:text="${endereco.uf}"></span></td>
 						<td><a class="waves-effect waves-light btn-small"
-							th:href="${(#mvc.url('FC#deletarDependente').arg(0, dependente.cpf)).build()}"><button
+							th:href="${(#mvc.url('CC#deletarEndereco').arg(0, endereco.cep)).build()}"><button
 									type="button" class="btn btn-danger">Excluir</button></a></td>
 
 
 					</tr>
 				</tbody>
+				
 			</table>
+			
+			<hr>
+			
+			<h2>Cadastrar endereço</h2>
 
-			<h2>Cadastrar dependentes</h2>
 
-
-			<form method="post" th:object="${dependente}">
+			<form method="post" th:object="${endereco}">
 
 				<div class="form-group">
 					<div class="row">
 
-						<div class="col">
-							<label for=""><b>Nome:</b> </label> <input type="text" value=""
-								name="nome" class="form-control" placeholder="Nome Completo"
-								required />
+						<div class="col-4">
+							<label for="cep"><b>Cep:</b> </label> <input type="text" value=""
+								name="cep" id="cep" class="form-control" placeholder="0000-000"
+								required>
 						</div>
-
-
-						<div class="col">
-							<label for=""><b>CPF: </b> </label><input type="text" value=""
-								name="cpf" placeholder="Somente números, sem traçõs ou pontos."
-								class="validate form-control" required />
-						</div>
-
-
-						<br> <br>
-						<div class="col">
-
+						<div class="col-12">
 							<div class="form-group">
-								<label for=""><b>Data de nascimento:</b></label> <input
-									type="date" value="" name="datanascimento" class="form-control"
-									required /> <small class="form-text text-muted"><i>*
-										Dia/Mês/Ano.</i></small>
+								<label for=""><b>logradouro:</b></label> <input type="text"
+									value="" id="logradouro" name="logradouro" class="form-control"
+									required />
 							</div>
 						</div>
-
+						<div class="col-8">
+							<div class="form-group">
+								<label for=""><b>Número:</b></label> <input type="text" value=""
+									id="numero" name="numero" class="form-control" required />
+							</div>
+						</div>
+						<div class="col-8">
+							<div class="form-group">
+								<label for=""><b>bairro:</b></label> <input type="text" value=""
+									id="bairro" name="bairro" class="form-control" required />
+							</div>
+						</div>
+						<div class="col-8">
+							<div class="form-group">
+								<label for=""><b>complemento:</b></label> <input type="text"
+									value="" id="complemento" name="complemento"
+									class="form-control" required />
+							</div>
+						</div>
+						<div class="col-8">
+							<div class="form-group">
+								<label for=""><b>localidade:</b></label> <input type="text"
+									value="" id="localidade" name="localidade" class="form-control"
+									required />
+							</div>
+						</div>
+						<div class="col-6">
+							<div class="form-group">
+								<label for=""><b>uf:</b></label> <select id="uf" name="uf">
+									<option value="AC">Acre</option>
+									<option value="AL">Alagoas</option>
+									<option value="AP">Amapá</option>
+									<option value="AM">Amazonas</option>
+									<option value="BA">Bahia</option>
+									<option value="CE">Ceará</option>
+									<option value="DF">Distrito Federal</option>
+									<option value="ES">Espírito Santo</option>
+									<option value="GO">Goiás</option>
+									<option value="MA">Maranhão</option>
+									<option value="MT">Mato Grosso</option>
+									<option value="MS">Mato Grosso do Sul</option>
+									<option value="MG">Minas Gerais</option>
+									<option value="PA">Pará</option>
+									<option value="PB">Paraíba</option>
+									<option value="PR">Paraná</option>
+									<option value="PE">Pernambuco</option>
+									<option value="PI">Piauí</option>
+									<option value="RJ">Rio de Janeiro</option>
+									<option value="RN">Rio Grande do Norte</option>
+									<option value="RS">Rio Grande do Sul</option>
+									<option value="RO">Rondônia</option>
+									<option value="RR">Roraima</option>
+									<option value="SC">Santa Catarina</option>
+									<option value="SP">São Paulo</option>
+									<option value="SE">Sergipe</option>
+									<option value="TO">Tocantins</option>
+								</select>
+							</div>
+						</div>
 					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Adicionar Endereço</button>
+			</form>	
+			<th:block th:include="mensagem-validacao"></th:block>
 
-
-
-
-					<button type="submit" class="btn btn-success">Adicionar
-						Dependente</button>
-			</form>
-			
-			-->
-
+			<br> <br>
 
 		</div>
+</div>
 
-		<th:block th:include="mensagem-validacao"></th:block>
+		<div style="height: 100px;"></div>
 
-		<br> <br>
-
-	</div>
-
-
-	<div style="height: 100px;"></div>
-
-	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
-		<span class="text-light align-middle">| Ordem de serviço | - © 2022
-			Copyright: Fernando Andrade</span>
-	</div>
+		<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
+			<span class="text-light align-middle">| Ordem de serviço | - ©
+				2022 Copyright: Fernando Andrade</span>
+		</div>
 
 
 
-	<!--JavaScript bootstrap-->
-	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous">
-		
-	</script>
+		<!--JavaScript bootstrap-->
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous">
+			
+		</script>
+
+		<!--Importando Script Jquery-->
+		<script type="text/javascript"
+			src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<script type="text/javascript">
+			$("#cep").focusout(
+					function() {
+						//Início do Comando AJAX
+						$.ajax({
+							//O campo URL diz o caminho de onde virá os dados
+							//É importante concatenar o valor digitado no CEP
+							url : 'https://viacep.com.br/ws/' + $(this).val()
+									+ '/json',
+							//Aqui você deve preencher o tipo de dados que será lido,
+							//no caso, estamos lendo JSON.
+							dataType : 'json',
+							//SUCESS é referente a função que será executada caso
+							//ele consiga ler a fonte de dados com sucesso.
+							//O parâmetro dentro da função se refere ao nome da variável
+							//que você vai dar para ler esse objeto.
+							success : function(resposta) {
+								//Agora basta definir os valores que você deseja preencher
+								//automaticamente nos campos acima.
+								$("#logradouro").val(resposta.logradouro);
+								$("#complemento").val(resposta.complemento);
+								$("#bairro").val(resposta.bairro);
+								$("#cidade").val(resposta.localidade);
+								$("#uf").val(resposta.uf);
+								//Vamos incluir para que o Número seja focado automaticamente
+								//melhorando a experiência do usuário
+								$("#numero").focus();
+							}
+						});
+					});
+		</script>
 </body>
 
 </html>

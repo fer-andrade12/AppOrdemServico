@@ -81,14 +81,6 @@
 					<th scope="col">Telefone:</th>
 					<th scope="col">E-mail:</th>
 					<th scope="col">CNPJ:</th>
-					<th scope="col">Cep:</th>
-					<th scope="col">Logradouro:</th>
-					<th scope="col">bairro:</th>
-					<th scope="col">complemento:</th>
-					<th scope="col">localidade:</th>
-					<th scope="col">UF:</th>
-					<th scope="col">Ação</th>
-					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -100,12 +92,6 @@
 					<td><span th:text="${cliente.telefone}"></span></td>
 					<td><span th:text="${cliente.email}"></span></td>
 					<td><span th:text="${cliente.cnpj}"></span></td>
-					<td><span th:text="${cliente.cep}"></span></td>
-					<td><span th:text="${cliente.logradouro}"></span></td>
-					<td><span th:text="${cliente.bairro}"></span></td>
-					<td><span th:text="${cliente.complemento}"></span></td>
-					<td><span th:text="${cliente.localidade}"></span></td>
-					<td><span th:text="${cliente.uf}"></span></td>
 					<td>
 					
 					<a
@@ -115,17 +101,15 @@
 					<td><a
 						th:href="${(#mvc.url('CC#editarCliente').arg(0, cliente.id)).build()}"><button
 								type="button" class="btn btn-primary">Editar</button></a></td>
-					<!--  
-					<td><a
-						th:href="${(#mvc.url('CC#detalhesCliente').arg(0, cliente.id)).build()}"><button
+					 
+				<!-- 	<td><a
+						th:href="${(#mvc.url('CC#detalhesClienteServico').arg(0, servico.id)).build()}"><button
 								type="button" class="btn btn-success">Adicionar
-								dependente</button></a></td>
-					-->			
+								Serviço</button></a></td> -->
 					<td><a
 						th:href="${(#mvc.url('CC#detalhesCliente').arg(0, cliente.id)).build()}">
 						<button
 								type="button" class="btn">Mais detalhes</button></a></td>
-
 				</tr>
 			</tbody>
 		</table>

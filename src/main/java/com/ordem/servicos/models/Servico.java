@@ -29,25 +29,19 @@ public class Servico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_servico")
 	private Long id;
 	
+	@Column(nullable = false)
+	private String servico;
+	
 	private String descricao;
 	
-	private String destino;
-		
-	public String getDestino() {
-		return destino;
-	}
-
-	public void setDestino(String destino) {
-		this.destino = destino;
-	}
-
 	@Column(nullable = false)
-	private Double valor;
+	private String valor;
 	
 	@Column(nullable = false)
-	private Double ponto;
+	private String ponto;
 	
 	@Temporal(TemporalType.DATE)
+	private Date data;
 	
 	@ManyToOne(targetEntity = Cliente.class)
 	@JoinColumn(name="cliente_id", nullable=false, foreignKey = @ForeignKey(value= ConstraintMode.CONSTRAINT, name="cliente_fk"))
@@ -56,7 +50,57 @@ public class Servico implements Serializable{
 	@ManyToOne(targetEntity = Motoboy.class)
 	@JoinColumn(name="motoboy_id", nullable=false, foreignKey = @ForeignKey(value= ConstraintMode.CONSTRAINT, name="motoboy_fk"))
 	private Motoboy motoboy;
+
+	// getters e setters
 	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getServico() {
+		return servico;
+	}
+
+	public void setServico(String servico) {
+		this.servico = servico;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+
+	public String getPonto() {
+		return ponto;
+	}
+
+	public void setPonto(String ponto) {
+		this.ponto = ponto;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -72,48 +116,22 @@ public class Servico implements Serializable{
 	public void setMotoboy(Motoboy motoboy) {
 		this.motoboy = motoboy;
 	}
-	
-	private Date data;
 
-	public Long getId() {
-		return id;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Servico other = (Servico) obj;
+		return Objects.equals(id, other.id);
 	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
-	public Double getPonto() {
-		return ponto;
-	}
-
-	public void setPonto(Double ponto) {
-		this.ponto = ponto;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-	
 	
 }

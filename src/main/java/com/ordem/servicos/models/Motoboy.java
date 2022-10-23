@@ -1,11 +1,13 @@
 package com.ordem.servicos.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,16 +32,18 @@ public class Motoboy implements Serializable{
 	
 	private String email;
 	
+	@OneToMany(mappedBy = "motoboy", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Servico> servicos = new ArrayList<Servico>();
+	
+	// getters e setters
+	
 	public List<Servico> getServico() {
 		return servicos;
 	}
-
+	
 	public void setServico(List<Servico> servico) {
 		this.servicos = servico;
 	}
-
-	@OneToMany(mappedBy = "motoboy", cascade = CascadeType.REMOVE)
-	private List<Servico> servicos;
 
 	public Long getId() {
 		return id;

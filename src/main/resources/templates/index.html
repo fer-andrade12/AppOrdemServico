@@ -45,19 +45,18 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="/motoboys"><< Listar Motoboys>></a></li>
+						<li class="nav-item"><a class="nav-link" href="/motoboys"><<
+								Listar Motoboys>></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastrarMotoboy">Cadastrar Motoboy</a></li>
 						<li class="nav-item"><a class="nav-link" href="/servicos">
 								<< Listar serviços>> </a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastraServico"> Cadastrar Ordem de serviço </a></li>
-											<li class="nav-item"><a class="nav-link" href="/clientes">
-								<< Listar Clientes>>
-							</a></li>
-						<li class="nav-item"><a class="nav-link" href="/cadastrarCliente">
-								 Cadastrar Cliente
-							</a></li>
+						<li class="nav-item"><a class="nav-link" href="/clientes">
+								<< Listar Clientes>> </a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarCliente"> Cadastrar Cliente </a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Sair
 						</a></li>
 					</ul>
@@ -69,12 +68,104 @@
 	<div class="container">
 		<br> <br>
 
-		
+		<!-- 	nova busca -->
+		<div class="row">
+			<div class="col">
+				<br> <br>
+				<div class="card text-center card w-100">
+					<div class="card-header">
+						<h3><< Pesquisar no sistema>></h3>
+					</div>
+
+
+
+					<form class="form-inline" method="post">
+
+
+						<div class="row form-group justify-content-center w-100 p-2">
+
+
+							<div class="col col-14 col-md-2">
+
+								<label for="cars" class="my-3 p-2 w-100">
+									<h5>Tipo de busca:</h5>
+								</label>
+							</div>
+
+							<div class="col col-14 col-md-2">
+
+
+								<select name="nome" id="nome"
+									class="custom-select my-3 p-2 w-100" required>
+									<option value="">Escolher...</option>
+									<option value="todos">Todos</option>
+									<option value="nomemotoboy">Motoboy</option>
+									<option value="nomecliente">Cliente</option>
+									<option value="nomeservico">Serviço</option>
+								</select>
+
+
+							</div>
+
+							<div class="col col-14 col-md-4">
+
+								<input class="form-control form-control-lg my-3 p-2 w-100"
+									type="search" placeholder="Insira sua pesquisa..."
+									aria-label="Pesquisar" required>
+
+							</div>
+
+							<div class="col col-14 col-md-2">
+
+								<button class="btn btn-primary my-3 p-2 w-100" type="submit">Pesquisar</button>
+
+							</div>
+						</div>
+
+					</form>
+
+					<div class="row form-group justify-content-center w-100 p-2">
+						<h4>
+							<i><span th:text="${mensagem}"></i>
+						</h4>
+						</span>
+					</div>
+
+					<div class="row form-group justify-content-center w-100 p-2">
+						<table
+							class="table table-hover table-responsive w-auto table-striped">
+
+							<tbody>
+								<tr th:each="cliente : ${clientes}">
+									<td><a
+										th:href="${(#mvc.url('CC#detalhesCliente').arg(0, cliente.id)).build()}"><span
+											th:text="${cliente.nome}"></span></a> - em <i>cliente.</i></td>
+								</tr>
+								<tr th:each="motoboy : ${motoboys}">
+									<td><a
+										th:href="${(#mvc.url('MC#detalhesMotoboy').arg(0, motoboy.codigo)).build()}"><span
+											th:text="${motoboy.nome}"></span></a> - em <i>motoboy.</i></td>
+								</tr>
+								<tr th:each="servico : ${servicos}">
+									<td><a
+										th:href="${(#mvc.url('MC#detalhesServico').arg(0, servico.codigo)).build()}"><span
+											th:text="${servico.nome}"></span></a> - em <i>Serviço.</i></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 
 
 				</div>
 			</div>
 		</div>
+
+	</div>
+
+
+	</div>
+	</div>
+	</div>
 
 
 
@@ -89,19 +180,19 @@
 	<div class="container">
 		<br> <br>
 
-		
-			
-			</div>
-		</div>
-		</div>
+
+
+	</div>
+	</div>
+	</div>
 
 
 	<div style="height: 100px;"></div>
 
 
 	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
-		<span class="text-light align-middle"> Ordem de serviços - Hugo | - ©
-			2022 Copyright: Fernando Andrade</span>
+		<span class="text-light align-middle"> Ordem de serviços - Hugo
+			| - © 2022 Copyright: Fernando Andrade</span>
 	</div>
 
 	<!--JavaScript bootstrap-->

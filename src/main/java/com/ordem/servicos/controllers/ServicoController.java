@@ -21,12 +21,6 @@ public class ServicoController {
 	@Autowired
 	private ServicoRepository sr;
 	
-	@Autowired
-	private ClienteRepository cr;
-
-	@Autowired
-	private MotoboyRepository mr;
-	
 	@RequestMapping("/cadastraServico")
 	public String form() {
 		return "servico/form-servico";
@@ -40,32 +34,8 @@ public class ServicoController {
 		}
 
 		sr.save(servico);
-		attributes.addFlashAttribute("mensagem", "Ordem cadastrado com sucesso!");
+		attributes.addFlashAttribute("mensagem", "Serviço cadastrado com sucesso!");
 		return "redirect:/cadastraServico";
 	}
 	
-	
-
-	// POST
-	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public ModelAndView buscarIndex(@RequestParam("buscar") String buscar, @RequestParam("nome") String nome) {
-
-		ModelAndView mv = new ModelAndView("index");
-		String mensagem = "Resultados da busca por " + buscar;
-
-		if (nome.equals("nomecliente")) {
-			mv.addObject("clientes", cr.findByNome(buscar));
-
-		} else if (nome.equals("nomemotoboy")) {
-			mv.addObject("motoboys", mr.findByNome(buscar));
-
-		}else {
-			mv.addObject("clientes", cr.findByNome(buscar));
-			mv.addObject("motoboy", mr.findByNome(buscar));
-		}
-
-		mv.addObject("mensagem", mensagem);
-
-		return mv;
-	}
 }

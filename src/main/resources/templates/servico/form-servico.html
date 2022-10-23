@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
 
@@ -43,12 +44,12 @@
 							aria-current="page" href="/">Home</a></li>
 						<li class="nav-item"><a class="nav-link" href="/motoboys"><<
 								Listar Motoboy >></a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/cadastrarMotoboy">Cadastrar Motoboy</a></li>
+						<li class="nav-item"><a class="nav-link" href="/">Cadastrar
+								Motoboy</a></li>
 						<li class="nav-item"><a class="nav-link" href="/servicos">
 								<< Listar serviços>> </a></li>
 						<li class="nav-item"><a class="nav-link"
-							href="/"> Cadastrar Ordem de serviço </a></li>
+							href="/cadastraServico"> Cadastrar Ordem de serviço </a></li>
 						<li class="nav-item"><a class="nav-link" href="/clientes">
 								<< Listar Clientes>> </a></li>
 						<li class="nav-item"><a class="nav-link"
@@ -64,60 +65,46 @@
 
 
 	<div class="container">
-		<br>
-		<br>
-		<h1>Cadastrar Ordem de serviço</h1>
+
+		<h1>Cadastro de Serviço</h1>
 
 		<br>
 
 		<th:block th:include="mensagem-validacao"></th:block>
 
 		<form method="post">
-			<div class="form-row">
-				<div class="col-md-4 mb-3">
-					<label for="validationServer01">Cliente:</label> <input
-						type="text" class="form-control is-valid" id="validationServer01"
-						placeholder="Nome do cliente ou empresa" name="buscar" id="buscar" required>
-					<div class="valid-feedback">Nome do cliente ou empresa!</div>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="validationServer02">Motoboy Prestador</label> <input
-						type="text" class="form-control is-valid" id="validationServer02"
-						placeholder="Nome do Motoboy" value="" required>
-					<div class="valid-feedback">Looks good!</div>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="validationServer02">Destino</label> <input
-						type="text" class="form-control is-valid" id="validationServer02"
-						placeholder="Av. Paulista - sp , Rod. Bandeirantes.." value="" required>
-					<div class="valid-feedback">Destino!</div>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="validationServer02">Descrição</label> <input
-						type="text" class="form-control is-valid" id="validationServer02"
-						placeholder="Obç." value="" required>
-					<div class="valid-feedback">Breve obcervação!</div>
-				</div>
 
-			<div class="form-row">
-				<div class="col-md-6 mb-3">
-					<label for="validationServer03">Pontos</label> <input type="text"
-						class="form-control is-invalid" id="validationServer03"
-						placeholder="City" required>
-					<div class="invalid-feedback">Please provide a valid city.</div>
-				</div>
-				<div class="col-md-6 mb-3">
-					<label for="validationServer03">Valor</label> <input type="text"
-						class="form-control is-invalid" id="validationServer03"
-						placeholder="City" required>
-					<div class="invalid-feedback">Please provide a valid city.</div>
-				</div>
-				<button class="btn btn-primary" type="submit">Salvar serviço</button>
+			<div class="form-group">
+				<label for=""><b>Serviço:</b> </label> <input type="text"
+					class="form-control" value=""
+					placeholder="Insira o nome do serviço" name="servico" required>
+				<small class="form-text text-muted"><i>* Serviço prestado.</i></small>
 			</div>
-		
-		</form>
 
-
+			<div class="row-8">
+				<div class="col">
+					<label for=""><b>Descriçao:</b> </label> <input type="text" value=""
+						name="descricao" class="form-control" placeholder="Descrição do serviço"
+						required />
+				</div>
+				<div class="col-6">
+					<label for=""><b>Valor:</b> </label>
+					<input type="text" value="" name="valor" id="valor" class="form-control" placeholder="50,49" required >
+				</div>
+				<div class="col-6">
+					<label for=""><b>Ponto:</b> </label>
+					<input type="text" value="" name="ponto" id="ponto" class="form-control" placeholder="13" required >
+				</div>
+				<div class="col-6">
+					<label for=""><b>Data:</b> </label>
+					<input type="date" value="" name="data" id="data" class="form-control" placeholder="20/10/2022" required >
+				</div>
+				<br>
+			</div>
+	<br>
+	<br>
+			<button type="submit" class="btn btn-success">Salvar</button>
+	</form>
 	</div>
 
 
@@ -125,8 +112,8 @@
 	<div style="height: 100px;"></div>
 
 	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
-		<span class="text-light align-middle">|Ordem de serviço | - ©
-			2022 Copyright: Fernando Andrade</span>
+		<span class="text-light align-middle">|Ordem de serviço Hugo | - ©
+			2022 Copyright: Andrade solução em TI</span>
 	</div>
 
 

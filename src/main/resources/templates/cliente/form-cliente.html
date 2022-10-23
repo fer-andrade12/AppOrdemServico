@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>| App RH |</title>
+<title>| Ordem de serviço - Hugo |</title>
 
 <!-- Bootstrap -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,19 +42,18 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" href="/">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="/motoboys"><< Listar Motoboy >></a></li>
+						<li class="nav-item"><a class="nav-link" href="/motoboys"><<
+								Listar Motoboy >></a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastrarMotoboy">Cadastrar Motoboy</a></li>
 						<li class="nav-item"><a class="nav-link" href="/servicos">
 								<< Listar serviços>> </a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/cadastraServico"> Cadastrar Ordem de serviço </a></li>
-											<li class="nav-item"><a class="nav-link" href="/clientes">
-								<< Listar Clientes>>
-							</a></li>
-						<li class="nav-item"><a class="nav-link" href="/cadastrarCliente">
-								 Cadastrar Cliente
-							</a></li>
+						<li class="nav-item"><a class="nav-link" href="/clientes">
+								<< Listar Clientes>> </a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/cadastrarCliente"> Cadastrar Cliente </a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">Sair
 						</a></li>
 					</ul>
@@ -85,109 +84,40 @@
 			<div class="row-8">
 				<div class="col">
 					<div class="form-group">
-						<label for=""><b>telefone:</b></label> <input
-							type="text" value="" name="telefone" class="form-control" required />
-						<small class="form-text text-muted" placeholder="(11)9999-9999"><i>* digite um telefone.</i></small>
-					</div>
+						<label for=""><b>telefone:</b></label> <input type="text" value=""
+							name="telefone" class="form-control" required /> <small
+							class="form-text text-muted" placeholder="(11)9999-9999"><i>*
+								digite um telefone.</i></small>
+								
 				</div>
-				<div class="col">
-					<label for=""><b>E-mail:</b> </label> <input type="text" value=""
-						name="email" class="form-control" placeholder="email@gmail.com"
-						required />
-				</div>
-				<div class="col">
-					<label for=""><b>CNPJ:</b> </label> <input type="text" value=""
-						name="cnpj" class="form-control" placeholder="Digite o cnpj"
-						required />
-				</div>
-				<div class="col">
-					<label for="cep"><b>Cep:</b> </label>
-					<input type="text" value="" name="cep" id="cep" class="form-control" placeholder="0000-000" required >
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""><b>logradouro:</b></label> <input
-							type="text" value="" id="logradouro" name="logradouro" class="form-control" required />
-					 </div>
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""><b>Número:</b></label> <input
-							type="text" value="" id="numero" name="numero" class="form-control" required />
-					 </div>
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""><b>bairro:</b></label> <input
-							type="text" value="" id="bairro" name="bairro" class="form-control" required />
-					 </div>
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""><b>complemento:</b></label> <input
-							type="text" value="" id="complemento" name="complemento" class="form-control" required />
-					 </div>
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""><b>localidade:</b></label> <input
-							type="text" value="" id="localidade" name="localidade" class="form-control" required />
-					 </div>
-				</div>
-				<div class="col">
-					<div class="form-group">
-						<label for=""><b>uf:</b></label>
-							<select id="uf" name="uf">
-							<option value="AC">Acre</option>
-							<option value="AL">Alagoas</option>
-							<option value="AP">Amapá</option>
-							<option value="AM">Amazonas</option>
-							<option value="BA">Bahia</option>
-							<option value="CE">Ceará</option>
-							<option value="DF">Distrito Federal</option>
-							<option value="ES">Espírito Santo</option>
-							<option value="GO">Goiás</option>
-							<option value="MA">Maranhão</option>
-							<option value="MT">Mato Grosso</option>
-							<option value="MS">Mato Grosso do Sul</option>
-							<option value="MG">Minas Gerais</option>
-							<option value="PA">Pará</option>
-							<option value="PB">Paraíba</option>
-							<option value="PR">Paraná</option>
-							<option value="PE">Pernambuco</option>
-							<option value="PI">Piauí</option>
-							<option value="RJ">Rio de Janeiro</option>
-							<option value="RN">Rio Grande do Norte</option>
-							<option value="RS">Rio Grande do Sul</option>
-							<option value="RO">Rondônia</option>
-							<option value="RR">Roraima</option>
-							<option value="SC">Santa Catarina</option>
-							<option value="SP">São Paulo</option>
-							<option value="SE">Sergipe</option>
-							<option value="TO">Tocantins</option>
-						</select>
-					 </div>
-				</div>
-
 			</div>
-			<button type="submit" class="btn btn-success">Salvar</button>
-	</div>
-
-	<br>
-	<br>
-
+			<div class="col">
+				<label for=""><b>E-mail:</b> </label> <input type="text" value=""
+					name="email" class="form-control" placeholder="email@gmail.com" required />
+			</div>
+			<div class="col">
+				<label for=""><b>CNPJ:</b> </label> <input type="text" value=""
+					name="cnpj" class="form-control" placeholder="Digite um CNPJ" required />
+			</div>
+		</div>
+		<br>
+		<br>
+		<button type="submit" class="btn btn-success" >Salvar</button>
 	</form>
+		
+		
+			</div>
 
 
-	</div>
+
 
 
 
 	<div style="height: 100px;"></div>
 
 	<div class="footer-copyright fixed-bottom bg-dark text-center py-3">
-		<span class="text-light align-middle">| Ordem de serviço | - © 2022
-			Copyright: Fernando Andrade</span>
+		<span class="text-light align-middle">| Ordem de serviço Hugo | - ©
+			2022 Copyright: Andrade solução em TI</span>
 	</div>
 
 
@@ -200,39 +130,6 @@
 		crossorigin="anonymous">
 		
 	</script>
-	
-	<!--Importando Script Jquery-->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	
-	<script type="text/javascript">
-			$("#cep").focusout(function(){
-				//Início do Comando AJAX
-				$.ajax({
-					//O campo URL diz o caminho de onde virá os dados
-					//É importante concatenar o valor digitado no CEP
-					url: 'https://viacep.com.br/ws/'+$(this).val()+'/json',
-					//Aqui você deve preencher o tipo de dados que será lido,
-					//no caso, estamos lendo JSON.
-					dataType: 'json',
-					//SUCESS é referente a função que será executada caso
-					//ele consiga ler a fonte de dados com sucesso.
-					//O parâmetro dentro da função se refere ao nome da variável
-					//que você vai dar para ler esse objeto.
-					success: function(resposta){
-						//Agora basta definir os valores que você deseja preencher
-						//automaticamente nos campos acima.
-						$("#logradouro").val(resposta.logradouro);
-						$("#complemento").val(resposta.complemento);
-						$("#bairro").val(resposta.bairro);
-						$("#cidade").val(resposta.localidade);
-						$("#uf").val(resposta.uf);
-						//Vamos incluir para que o Número seja focado automaticamente
-						//melhorando a experiência do usuário
-						$("#numero").focus();
-					}
-				});
-			});
-		</script>
 
 
 </body>
